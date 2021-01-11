@@ -3,9 +3,9 @@ import {CalcContext} from '../context/CalcContext';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const Display = () => {
-    const { result, partialCalc } = useContext(CalcContext);
+    const { result, displayNum, partialCalc, setDisplayNum } = useContext(CalcContext);
 
-    return ( <div className='bg-info'>{result}</div> );
+    return ( <div className='bg-info'>{displayNum}</div> );
 }
  
 export default Display;
