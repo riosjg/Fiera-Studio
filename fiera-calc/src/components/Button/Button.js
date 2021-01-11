@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
-import { CalcContext } from '../context/CalcContext';
+import { CalcContext } from '../../context/CalcContext';
+import './button.css';
 
 const Button = (props) => {
     const { result, displayNum, partialCalc, setDisplayNum } = useContext(CalcContext);
@@ -28,7 +29,7 @@ const Button = (props) => {
                         setValue(0);
                         setOperator('');
                     break;
-                    case '*':
+                    case 'X':
                         partialCalc(result * value);
                         setDisplayNum(result * value);
                         setValue(0);
@@ -73,21 +74,22 @@ const Button = (props) => {
         }
     }
 
-    const keys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'C', '=', '+', '-', '*', '/'];
+    const keys = ['C', '%', 1, 2, 3, 'X', 4, 5, 6, '-', 7, 8, 9, '+', 0, '='];
 
-     return ( 
-    //  <div onClick={() => partialCalc(result +1)}>Hi{result} {props.operator}</div>
-     <div>
-         {keys.map(item => (
-             <button 
-             value={item}
-             key={item}
-             onClick={() => makeCalc(item)}
-             >
-                 {item}
-             </button>
-         ))}
-     </div>);
+     return (
+        <>
+            {keys.map((item, index) => (
+                <button 
+                value={item}
+                key={item}
+                className={`item-${index}`}
+                onClick={() => makeCalc(item)}
+                >
+                    {item}
+                </button>
+            ))}
+        </>
+    );
 }
  
 export default Button;
