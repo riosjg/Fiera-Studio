@@ -15,60 +15,48 @@ const Button = (props) => {
         }
         else{
             if(operator && (key !== 'C')){ //makes the calc according to the operation if the user doesn't press delete
-                
-                switch(operator){
-                    case '+':
-                        partialCalc(result + value);
-                        setDisplayNum(result + value);
-                        setValue(0);
-                        setOperator('');
-                    break;
-                    case '-':
-                        partialCalc(result - value);
-                        setDisplayNum(result - value);
-                        setValue(0);
-                        setOperator('');
-                    break;
-                    case 'X':
-                        partialCalc(result * value);
-                        setDisplayNum(result * value);
-                        setValue(0);
-                        setOperator('');
-                    break;
-                    case '/':
-                        partialCalc(result / value);
-                        setDisplayNum( (result / value).toFixed(2) );
-                        setValue(0);
-                        setOperator('');
-                    break;
-                    case '=':
-                        console.log('igual')
-                        partialCalc(result + value);
-
-                        setValue(0);
-                    break;
+                if(operator === '+'){
+                    partialCalc(result + value);
+                    setDisplayNum(result + value);
+                    setValue(0);
+                    setOperator('');
+                }else if(operator === '-'){
+                    partialCalc(result - value);
+                    setDisplayNum(result - value);
+                    setValue(0);
+                    setOperator('');
+                }else if(operator === 'X'){
+                    partialCalc(result * value);
+                    setDisplayNum(result * value);
+                    setValue(0);
+                    setOperator('');
+                }else if(operator === '/'){
+                    partialCalc(result / value);
+                    setDisplayNum( (result / value).toFixed(2) );
+                    setValue(0);
+                    setOperator('');
+                }else{
+                    partialCalc(result + value);
+                    setValue(0);
                 }
                 if(key !== '='){
                     setOperator(key)
                 }
             }
             else{
-                switch(key){
-                    case 'C':
-                        partialCalc(0);
-                        setDisplayNum(0);
-                        setValue(0);
-                        setOperator('');
-                    break;
-                    case '=':
-                        partialCalc(0);
-                        setValue(0);
-                        setOperator('');
-                    break;
-                   default:
-                        partialCalc(value);
-                        setValue(0);
-                        setOperator(key)
+                if(key === 'C'){
+                    partialCalc(0);
+                    setDisplayNum(0);
+                    setValue(0);
+                    setOperator('');
+                }else if(key === '='){
+                    partialCalc(0);
+                    setValue(0);
+                    setOperator('');
+                }else{
+                    partialCalc(value);
+                    setValue(0);
+                    setOperator(key)
                 }
             }
         }
